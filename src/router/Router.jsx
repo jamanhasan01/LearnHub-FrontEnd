@@ -4,6 +4,7 @@ import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import Services from "../components/Services";
 
 let router=createBrowserRouter([
     {
@@ -14,6 +15,10 @@ let router=createBrowserRouter([
                 index:true,
                 path:"/",
                 element:<Home></Home>
+            },
+            {
+                path:"/services",
+                element:<Services></Services>
             },
             {
                 path:'/signin',

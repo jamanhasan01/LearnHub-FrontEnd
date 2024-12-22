@@ -1,6 +1,20 @@
+import { useContext } from "react";
 import { Link } from "react-router-dom";
+import { authContext } from "../provider/AuthProvider";
 
 const SignIn = () => {
+  let {loginWithGoogle,setuser,setloader}=useContext(authContext)
+  let handleGoogleLogin=()=>{
+    loginWithGoogle()
+    .then(res=>{
+      setuser(res.user)
+      setloader(false)
+    })
+    .catch((error)=>{
+      console.log(error);
+      
+    })
+  }
   return (
     <div>
       <div className=" mx-auto w-full max-w-sm  shadow-2xl my-20 p-5">
@@ -41,7 +55,7 @@ const SignIn = () => {
           </div>
         </form>
         <div className="divider">OR</div>
-        <button className="btn w-full bg-black text-white hover:bg-black/80">Login With Google</button>
+        <button onClick={handleGoogleLogin} className="btn w-full bg-black text-white hover:bg-black/80">Login With Google</button>
         <div className="text-center">don't you have any account?<Link className=" font-semibold" to="/signup">Register</Link></div>
       </div>
     </div>
