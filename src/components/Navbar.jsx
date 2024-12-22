@@ -1,7 +1,10 @@
-import { useState, useEffect, useRef } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, useRef, useContext } from "react";
+import { Link, useLocation } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
+import { authContext } from "../provider/AuthProvider";
 const Navbar = () => {
+  let { user, logOut } = useContext(authContext);
+  let location = useLocation();
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
@@ -94,20 +97,42 @@ const Navbar = () => {
                 onClick={() => setDropdownOpen((prev) => !prev)}
               >
                 Dashboard
-                <FaChevronDown/>
+                <FaChevronDown />
               </Link>
               {dropdownOpen && (
                 <ul className="absolute top-full mt-2 w-44 bg-white text-black rounded shadow-lg p-2">
-                  {dropdownLists } 
+                  {dropdownLists}
                 </ul>
               )}
             </li>
           </ul>
         </div>
         <div className="navbar-end">
-          <Link to={"/signin"} className="btn">
-            Login
-          </Link>
+          {user ? (
+            <div className="flex btn btn-ghost avatar ">
+              <div  className="w-10 rounded-full border-gray-300 border">
+                <img title={`${user?.displayName}`}
+                  alt="Tailwind CSS Navbar component"
+                  src={`${user.photoURL}`}
+                />
+              </div>
+              <button onClick={logOut} className="btn">
+                Logout
+              </button>
+            </div>
+          ) : (
+            <div>
+              {location.pathname === "/signin" ? (
+                <Link to={"/signup"} className="btn">
+                  Register
+                </Link>
+              ) : (
+                <Link to={"/signin"} className="btn">
+                  Login
+                </Link>
+              )}
+            </div>
+          )}
         </div>
       </div>
     </div>
@@ -115,3 +140,9 @@ const Navbar = () => {
 };
 
 export default Navbar;
+
+{
+  /* <Link to={"/signin"} className="btn">
+            Login
+          </Link> */
+}
