@@ -1,10 +1,12 @@
 import { useContext } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const SignUp = () => {
   let { loginWithGoogle, setuser, setloader, createUser } =
     useContext(authContext);
+  let navigate=useNavigate()
   let handleGoogleLogin = () => {
     loginWithGoogle()
       .then((res) => {
@@ -16,27 +18,27 @@ const SignUp = () => {
       });
   };
 
-
   let handleRegister = (e) => {
     e.preventDefault();
-    let form = new FormData(e.target)
-    let name=form.get("name")
-    let email=form.get("email")
-    let photoUrl=form.get("photoUrl") 
-    let password=form.get("password") 
-   
-    console.log(email,password,photoUrl,name);
+    let form = new FormData(e.target);
+    let name = form.get("name");
+    let email = form.get("email");
+    let photoUrl = form.get("photoUrl");
+    let password = form.get("password");
 
-    createUser(email,password)
-    .then((res) => {
-      let user = res.user;
-      // update user default property
-      user.photoURL=photoUrl
-      user.displayName=name
-      setuser(user)
-    }).catch(error=>console.log(error)
-    )
-    
+    console.log(email, password, photoUrl, name);
+
+    createUser(email, password)
+      .then((res) => {
+        let user = res.user;
+        // update user default property
+        user.photoURL = photoUrl;
+        user.displayName = name;
+        setuser(user);
+        toast.success("Sign-Up successfully");
+        navigate('/')
+      })
+      .catch((error) => toast.warn(error.code));
   };
   return (
     <div>
@@ -68,17 +70,17 @@ const SignUp = () => {
             />
           </div>
           <div className="form-control">
-              <label className="label">
-                <span className="label-text">Photo Url</span>
-              </label>
-              <input
-                type="url"
-                name="photoUrl"
-                placeholder="Photo"
-                className="input input-bordered"
-                required
-              />
-            </div>
+            <label className="label">
+              <span className="label-text">Photo Url</span>
+            </label>
+            <input
+              type="url"
+              name="photoUrl"
+              placeholder="Photo"
+              className="input input-bordered"
+              required
+            />
+          </div>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Password</span>
@@ -90,7 +92,6 @@ const SignUp = () => {
               className="input input-bordered"
               required
             />
- 
           </div>
           <div className="form-control mt-6">
             <button className="btn bg-black text-white hover:bg-black/80">
