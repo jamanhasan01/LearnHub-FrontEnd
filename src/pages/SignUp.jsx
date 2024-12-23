@@ -12,6 +12,8 @@ const SignUp = () => {
       .then((res) => {
         setuser(res.user);
         setloader(false);
+        toast.success("Sign-Up successfully");
+        navigate('/')
       })
       .catch((error) => {
         console.log(error);
@@ -35,6 +37,7 @@ const SignUp = () => {
         user.photoURL = photoUrl;
         user.displayName = name;
         setuser(user);
+        setloader(false);
         toast.success("Sign-Up successfully");
         navigate('/')
       })

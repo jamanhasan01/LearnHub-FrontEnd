@@ -14,6 +14,8 @@ const SignIn = () => {
       .then((res) => {
         setuser(res.user);
         setloader(false);
+        toast.success("Sign-In successfully");
+        navigate("/");
       })
       .catch((error) => {
         console.log(error);
@@ -31,6 +33,7 @@ const SignIn = () => {
       .then((res) => {
         let user = res.user;
         setuser(user);
+        setloader(false);
         toast.success("Sign-In successfully");
         navigate("/");
       })

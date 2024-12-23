@@ -40,16 +40,16 @@ const Navbar = () => {
   const dropdownLists = (
     <>
       <li>
-        <Link>Add Service</Link>
+        <Link to={'/addservice'}>Add Service</Link>
       </li>
       <li>
-        <Link>Manage Service</Link>
+        <Link to={'/manageservice'}>Manage Service</Link>
       </li>
       <li>
-        <Link>Book Service</Link>
+        <Link to={'/bookedservices'}>Booked Services</Link>
       </li>
       <li>
-        <Link>Service To Do</Link>
+        <Link to={'/servicetodo'}>Service To Do</Link>
       </li>
     </>
   );
@@ -80,10 +80,11 @@ const Navbar = () => {
               className="menu menu-sm dropdown-content rounded-box bg-black mt-3 w-52 p-2 shadow"
             >
               {lists}
-              <li>
+              {user&&<li>
                 <Link>Dashboard</Link>
                 <ul className="p-2">{dropdownLists}</ul>
               </li>
+              }
             </ul>
           </div>
           <Link className="btn btn-ghost text-xl">LearnHub</Link>
@@ -91,6 +92,7 @@ const Navbar = () => {
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 items-center">
             {lists}
+            {user&&
             <li ref={dropdownRef} className="relative">
               <Link
                 className="!text-white"
@@ -105,6 +107,7 @@ const Navbar = () => {
                 </ul>
               )}
             </li>
+            }
           </ul>
         </div>
         <div className="navbar-end">
