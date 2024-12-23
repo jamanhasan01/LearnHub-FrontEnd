@@ -4,14 +4,14 @@ import { authContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
 const SignUp = () => {
-  let { loginWithGoogle, setuser, setloader, createUser } =
+  let { loginWithGoogle, setuser, setLoading, createUser } =
     useContext(authContext);
   let navigate=useNavigate()
   let handleGoogleLogin = () => {
     loginWithGoogle()
       .then((res) => {
         setuser(res.user);
-        setloader(false);
+        setLoading(false);
         toast.success("Sign-Up successfully");
         navigate('/')
       })
@@ -37,7 +37,7 @@ const SignUp = () => {
         user.photoURL = photoUrl;
         user.displayName = name;
         setuser(user);
-        setloader(false);
+        setLoading(false);
         toast.success("Sign-Up successfully");
         navigate('/')
       })

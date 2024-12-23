@@ -4,11 +4,13 @@ import Home from "../pages/Home";
 import ErrorPage from "../pages/ErrorPage";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
-import Services from "../components/Services";
+import Services from "../pages/Services";
 import AddService from "../pages/AddService";
 import ManageService from "../pages/ManageService";
 import BookedServies from "../pages/BookedServies";
 import ServiceToDo from "../pages/ServiceToDo";
+import PrivetRouter from "./PrivetRouter";
+import ServiceDetails from "../pages/ServiceDetails";
 
 let router=createBrowserRouter([
     {
@@ -26,7 +28,11 @@ let router=createBrowserRouter([
             },
             {
                 path:'/addservice',
-                element:<AddService></AddService>
+                element:<PrivetRouter><AddService></AddService></PrivetRouter>
+            },
+            {
+                path:'/servicedetails/:id',
+                element:<PrivetRouter><ServiceDetails></ServiceDetails></PrivetRouter>
             },
             {
                 path:'/manageservice',

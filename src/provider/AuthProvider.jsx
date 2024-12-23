@@ -13,11 +13,11 @@ export let authContext = createContext();
 
 const AuthProvider = ({ children }) => {
   let [user, setuser] = useState(null);
-  let [loader, setloader] = useState(true);
+  let [loading, setLoading] = useState(true);
 
   let googleProvider = new GoogleAuthProvider();
   let loginWithGoogle = () => {
-    setloader(true);
+    setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
@@ -35,7 +35,7 @@ const AuthProvider = ({ children }) => {
   useEffect(() => {
     let unsubcribe = onAuthStateChanged(auth, (currentUser) => {
       setuser(currentUser);
-      setloader(false);
+      setLoading(false);
     });
     return () => unsubcribe();
   }, []);
@@ -46,8 +46,8 @@ const AuthProvider = ({ children }) => {
     loginWithGoogle,
     setuser,
     user,
-    setloader,
-    loader,
+    setLoading,
+    loading,
     createUser,
     signInUser,
     logOut,

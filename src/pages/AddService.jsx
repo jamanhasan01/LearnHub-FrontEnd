@@ -2,10 +2,14 @@ import { useContext } from "react";
 import { authContext } from "../provider/AuthProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
+import { useLocation } from "react-router-dom";
 
 const AddService = () => {
     let {user}=useContext(authContext)
+    let location=useLocation()
+    console.log(location);
     
+
     let handleAddService=(e)=>{
         e.preventDefault()
         
