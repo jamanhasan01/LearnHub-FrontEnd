@@ -11,6 +11,7 @@ import BookedServies from "../pages/BookedServies";
 import ServiceToDo from "../pages/ServiceToDo";
 import PrivetRouter from "./PrivetRouter";
 import ServiceDetails from "../pages/ServiceDetails";
+import ModelFromData from "../components/ModelFromData";
 
 let router=createBrowserRouter([
     {
@@ -34,6 +35,11 @@ let router=createBrowserRouter([
                 path:'/servicedetails/:id',
                 element:<PrivetRouter><ServiceDetails></ServiceDetails></PrivetRouter>
             },
+            {
+                path:'/servicedetails/:id/:email',
+                element:<PrivetRouter><ModelFromData></ModelFromData></PrivetRouter>
+            },
+
             {
                 path:'/manageservice',
                 element:<ManageService></ManageService>

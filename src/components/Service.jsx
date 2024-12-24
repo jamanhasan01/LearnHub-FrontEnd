@@ -1,6 +1,5 @@
-import { useContext } from "react";
-import { Link, useNavigate } from "react-router-dom";
-import { authContext } from "../provider/AuthProvider";
+
+import { Link,  } from "react-router-dom";
 
 const Service = ({ service }) => {
   let {_id, photoUrl, name, description, auther_photo, auther_name } = service;

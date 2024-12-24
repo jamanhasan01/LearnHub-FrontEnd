@@ -1,12 +1,13 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import {  useParams } from "react-router-dom";
+import { Link, useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
+import { toast } from "react-toastify";
 
 const ServiceDetails = () => {
-  let { setLoading } = useContext(authContext);
+  let { setLoading, user } = useContext(authContext);
   let { id } = useParams();
-
+  let navigate = useNavigate();
   const [serviceData, setserviceData] = useState({});
 
   useEffect(() => {
@@ -15,11 +16,34 @@ const ServiceDetails = () => {
       setserviceData(data);
       setLoading(false);
     });
-  }, [serviceData]);
-  let { photoUrl, name, description, auther_photo, auther_name, price, Area,auther_email } =
-    serviceData;
-    console.log(auther_email);
-    
+  }, [id]);
+
+  let handlePurchaseDate = (e) => {
+    e.preventDefault();
+    let form = new FormData(e.target);
+    let purchaseData = Object.fromEntries(form.entries());
+
+    axios.post("http://localhost:5000/booked", purchaseData).then((res) => {
+      let data = res.data;
+
+      if (data.insertedId) {
+        toast("Purchase Successfully");
+        navigate("/bookedservices");
+      }
+    })
+    .catch((error)=>toast.error(error.code))
+  };
+
+  let {
+    photoUrl,
+    name,
+    description,
+    auther_photo,
+    auther_name,
+    price,
+    Area,
+    author_email,
+  } = serviceData;
 
   return (
     <div className="max-w-xl mx-auto border border-gray-200 p-6 flex flex-col gap-2">
@@ -35,12 +59,11 @@ const ServiceDetails = () => {
 
       {/* model show */}
 
-      {/* You can open the modal using document.getElementById('ID').showModal() method */}
       <button
         className="btn bg-black text-white"
         onClick={() => document.getElementById("my_modal_3").showModal()}
       >
-        open modal
+        Book Now
       </button>
       <dialog id="my_modal_3" className="modal">
         <div className="modal-box">
@@ -50,10 +73,146 @@ const ServiceDetails = () => {
               ✕
             </button>
           </form>
+          {/* ---------------------------------------------- */}
+          <form onSubmit={handlePurchaseDate} method="dialog">
+            {/* row  */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Service Id</span>
+                </label>
+                <input
+                  type="text"
+                  name="ServiceId"
+                  placeholder="Service Id"
+                  className="input input-bordered"
+                  value={id}
+                  required
+                />
+              </div>
 
-          {/* modal form for show input data */}
-          <form action="">
-           
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Email</span>
+                </label>
+                <input
+                  type="text"
+                  name="email"
+                  placeholder="email"
+                  className="input input-bordered"
+                  value={author_email}
+                  required
+                />
+              </div>
+            </div>
+            {/* row  */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Price</span>
+                </label>
+                <input
+                  type="number"
+                  name="price"
+                  placeholder="price"
+                  className="input input-bordered"
+                  value={price}
+                  required
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="name"
+                  placeholder="name"
+                  className="input input-bordered"
+                  value={name}
+                  required
+                />
+              </div>
+            </div>
+            {/* row  */}
+            <div className="grid grid-cols-1 gap-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Photo Url</span>
+                </label>
+                <input
+                  type="url"
+                  name="photoUrl"
+                  placeholder="Photo"
+                  className="input input-bordered"
+                  value={photoUrl}
+                  required
+                />
+              </div>
+            </div>
+            {/* row  */}
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Name</span>
+                </label>
+                <input
+                  type="text"
+                  name="userName"
+                  placeholder="Your Name"
+                  className="input input-bordered"
+                  value={user.displayName}
+                  required
+                />
+              </div>
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Email</span>
+                </label>
+                <input
+                  type="text"
+                  name="userEmail"
+                  placeholder="Your email"
+                  className="input input-bordered"
+                  value={user.email}
+                  required
+                />
+              </div>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Address</span>
+                </label>
+                <input
+                  type="text"
+                  name="UserAddress"
+                  placeholder="Type Your Address"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+
+              <div className="form-control">
+                <label className="label">
+                  <span className="label-text">Your Email</span>
+                </label>
+                <input
+                  type="date"
+                  name="UserDate"
+                  // placeholder="Date"
+                  className="input input-bordered"
+                  required
+                />
+              </div>
+            </div>
+
+            <div className="form-control mt-6">
+              <button className="btn bg-black text-white hover:bg-black/80">
+                Purchase Button
+              </button>
+            </div>
           </form>
         </div>
       </dialog>
