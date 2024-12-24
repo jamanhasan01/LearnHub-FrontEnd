@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
-import { Link, useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
 
@@ -21,11 +21,19 @@ const ServiceDetails = () => {
   let handlePurchaseDate = (e) => {
     e.preventDefault();
     let form = new FormData(e.target);
-    let purchaseData = Object.fromEntries(form.entries());
-
-    axios.post("http://localhost:5000/booked", purchaseData).then((res) => {
+    let purchaseData =Object.fromEntries(form.entries());
+    console.log(purchaseData);
+    let newPurchaseData={...purchaseData}
+   
+    
+    newPurchaseData.ServiceStatus="pending"
+    newPurchaseData.auther_photo=serviceData.auther_photo
+    newPurchaseData.auther_name=serviceData.auther_name
+    
+    axios.post("http://localhost:5000/booked", newPurchaseData).then((res) => {
       let data = res.data;
 
+      
       if (data.insertedId) {
         toast("Purchase Successfully");
         navigate("/bookedservices");
@@ -44,6 +52,9 @@ const ServiceDetails = () => {
     Area,
     author_email,
   } = serviceData;
+  
+ 
+  
 
   return (
     <div className="max-w-xl mx-auto border border-gray-200 p-6 flex flex-col gap-2">
@@ -87,13 +98,14 @@ const ServiceDetails = () => {
                   placeholder="Service Id"
                   className="input input-bordered"
                   value={id}
+                  
                   required
                 />
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Email</span>
+                  <span className="label-text">Service Email</span>
                 </label>
                 <input
                   type="text"
@@ -101,6 +113,7 @@ const ServiceDetails = () => {
                   placeholder="email"
                   className="input input-bordered"
                   value={author_email}
+                 
                   required
                 />
               </div>
@@ -109,7 +122,7 @@ const ServiceDetails = () => {
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Price</span>
+                  <span className="label-text">Service Price</span>
                 </label>
                 <input
                   type="number"
@@ -117,13 +130,14 @@ const ServiceDetails = () => {
                   placeholder="price"
                   className="input input-bordered"
                   value={price}
+                  
                   required
                 />
               </div>
 
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Name</span>
+                  <span className="label-text">Service Name</span>
                 </label>
                 <input
                   type="text"
@@ -131,6 +145,7 @@ const ServiceDetails = () => {
                   placeholder="name"
                   className="input input-bordered"
                   value={name}
+                  
                   required
                 />
               </div>
@@ -139,7 +154,7 @@ const ServiceDetails = () => {
             <div className="grid grid-cols-1 gap-4">
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo Url</span>
+                  <span className="label-text">Service Photo Url</span>
                 </label>
                 <input
                   type="url"
@@ -147,6 +162,7 @@ const ServiceDetails = () => {
                   placeholder="Photo"
                   className="input input-bordered"
                   value={photoUrl}
+                  
                   required
                 />
               </div>
@@ -162,7 +178,8 @@ const ServiceDetails = () => {
                   name="userName"
                   placeholder="Your Name"
                   className="input input-bordered"
-                  value={user.displayName}
+                  value={user?.displayName}
+                  
                   required
                 />
               </div>
@@ -175,7 +192,8 @@ const ServiceDetails = () => {
                   name="userEmail"
                   placeholder="Your email"
                   className="input input-bordered"
-                  value={user.email}
+                  value={user?.email}
+                  
                   required
                 />
               </div>
@@ -201,7 +219,7 @@ const ServiceDetails = () => {
                 <input
                   type="date"
                   name="UserDate"
-                  // placeholder="Date"
+               
                   className="input input-bordered"
                   required
                 />
