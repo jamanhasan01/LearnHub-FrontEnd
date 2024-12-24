@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import slider1 from "../assets/slider1.jpg";
 import slider2 from "../assets/slider2.jpg";
 import slider3 from "../assets/slider3.jpg";
+import { Link } from "react-router-dom";
 
 const Slider = () => {
   const slides = [
@@ -71,9 +72,9 @@ const Slider = () => {
               <p className="text-white/80 text-sm lg:text-xl max-w-[800px]">
                 {slide.description}
               </p>
-              <button className="btn bg-mainClr text-white border-none">
+              <Link to={'/services'} className="btn bg-mainClr text-white border-none">
               Explore More
-              </button>
+              </Link>
             </div>
           </div>
         ))}
