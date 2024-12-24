@@ -12,6 +12,7 @@ import ServiceToDo from "../pages/ServiceToDo";
 import PrivetRouter from "./PrivetRouter";
 import ServiceDetails from "../pages/ServiceDetails";
 import ModelFromData from "../components/ModelFromData";
+import UpdateService from "../pages/UpdateService";
 
 let router=createBrowserRouter([
     {
@@ -32,6 +33,10 @@ let router=createBrowserRouter([
                 element:<PrivetRouter><AddService></AddService></PrivetRouter>
             },
             {
+                path:'/updateservice/:id',
+                element:<PrivetRouter><UpdateService></UpdateService></PrivetRouter>
+            },
+            {
                 path:'/servicedetails/:id',
                 element:<PrivetRouter><ServiceDetails></ServiceDetails></PrivetRouter>
             },
@@ -42,7 +47,7 @@ let router=createBrowserRouter([
 
             {
                 path:'/manageservice',
-                element:<ManageService></ManageService>
+                element:<PrivetRouter> <ManageService></ManageService></PrivetRouter>
             },
             {
                 path:'/bookedservices',

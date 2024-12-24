@@ -1,38 +1,46 @@
-import { useContext, useEffect, useState } from "react"
-import Service from "./Service"
-import axios from "axios"
-import { Link } from "react-router-dom"
-import { authContext } from "../provider/AuthProvider"
+import { useContext, useEffect, useState } from "react";
+import Service from "./Service";
+import axios from "axios";
+import { Link } from "react-router-dom";
+import { authContext } from "../provider/AuthProvider";
 
 const PopularService = () => {
-    const [serviceData, setserviceData] = useState([])
-    let {setLoading}=useContext(authContext)
-  useEffect(()=>{
-    axios.get('http://localhost:5000/services')
-    .then((res)=>{
-      let data=res.data
-      let dataSalice=data.slice(0,6)
+  const [serviceData, setserviceData] = useState([]);
+  let { setLoading } = useContext(authContext);
+  useEffect(() => {
+    axios.get("http://localhost:5000/services").then((res) => {
+      let data = res.data;
+      let dataSalice = data.slice(0, 6);
       setserviceData(dataSalice);
-      setLoading(false)
-    })
-  },[serviceData])
-  
-
+      setLoading(false);
+    });
+  }, [serviceData]);
 
   return (
     <div>
-        <h1 className="text-4xl text-center font-semibold mb-10">All Services {serviceData.length}</h1>
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {
-              serviceData.map((service)=><Service key={service._id} service={service}></Service>)
-            }
+      {serviceData.length > 0 && (
+        <div>
+          <h1 className="text-4xl text-center font-semibold mb-10">
+            Popular Service
+          </h1>
+
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            {serviceData.map((service) => (
+              <Service key={service._id} service={service}></Service>
+            ))}
+          </div>
+          <div className="w-full mt-10 text-center">
+            <Link
+              to={"/services"}
+              className="btn text-center bg-black text-white"
+            >
+              View All
+            </Link>
+          </div>
         </div>
-        <div className="w-full mt-10 text-center">
-        <Link to={'/services'} className="btn text-center bg-black text-white">View All</Link>
-        </div>
+      )}
     </div>
-  )
+  );
+};
 
-}
-
-export default PopularService
+export default PopularService;
