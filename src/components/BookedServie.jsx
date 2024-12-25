@@ -20,7 +20,7 @@ const BookedServie = ({ booked }) => {
       <div className="flex flex-wrap justify-between items-center">
         <div className="felx flex-col">
           <h4 className="text-gray-700 font-semibold ">Date : {UserDate}</h4>
-          <h4 className="font-semibold my-2">Status : {ServiceStatus}</h4>
+          <h4 className="font-semibold my-2">Status : <span className={`${ServiceStatus=="completed"&&' bg-green-300 text-green-800' } ${ServiceStatus=="working"&&' bg-yellow-500 text-yellow-100' }  ${ServiceStatus=="pending"&&' bg-red-600 text-red-100' } text-sm font-medium  px-2 p-1 rounded-full`}>{ServiceStatus}</span></h4>
           <div className="flex items-center gap-2">
             
             <img
