@@ -4,7 +4,7 @@ import Service from "../components/Service"
 import { authContext } from "../provider/AuthProvider"
 import Loading from "../components/Loading"
 import NoService from "../components/NoService"
-
+import { Helmet } from "react-helmet-async";
 
 const Services = () => {
   let {setLoading,loading}=useContext(authContext)
@@ -31,6 +31,7 @@ const Services = () => {
   
   return (
     <div>
+   
         <h1 className="text-4xl text-center font-semibold mb-10">All Services </h1>
         {serviceData.length>0?
         <>

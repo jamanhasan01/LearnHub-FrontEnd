@@ -3,6 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import { Helmet } from "react-helmet-async";
 
 const ServiceDetails = () => {
   let { setLoading, user } = useContext(authContext);

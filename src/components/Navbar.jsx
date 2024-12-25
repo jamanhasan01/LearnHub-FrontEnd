@@ -94,13 +94,13 @@ const Navbar = () => {
             {lists}
             {user&&
             <li ref={dropdownRef} className="relative">
-              <Link
+              <button
                 className="!text-white"
                 onClick={() => setDropdownOpen((prev) => !prev)}
               >
                 Dashboard
                 <FaChevronDown />
-              </Link>
+              </button>
               {dropdownOpen && (
                 <ul className="absolute top-full mt-2 w-44 bg-white text-black rounded shadow-lg p-2">
                   {dropdownLists}

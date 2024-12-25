@@ -1,8 +1,21 @@
-import { Link } from "react-router-dom";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 const Manage = ({manage}) => {
     let {_id,photoUrl, name, description,price,Area} = manage;
-  
+ 
+    
+    let handleDelete=(id)=>{
+        axios.delete(`http://localhost:5000/services/${id}`)
+        .then(res=>{
+            let data=res.data
+            if (data.deletedCount) {
+                toast('Data has been deleted')
+               
+            }
+        })
+    }
     
     return (
       <div className="flex flex-col gap-2 p-3 border border-gray-200 rounded-xl">
@@ -18,7 +31,7 @@ const Manage = ({manage}) => {
         <Link to={`/updateservice/${_id}`}>
         <button className="btn bg-black text-white">Update Action</button>
         </Link> 
-        <button className="btn bg-red-700 text-white">
+        <button onClick={()=>handleDelete(_id)} className="btn bg-red-700 text-white">
             Delete Action
         </button>
         </div>
