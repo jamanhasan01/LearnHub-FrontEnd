@@ -2,6 +2,9 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
 import { authContext } from "../provider/AuthProvider";
+
+import logo from '../assets/learnhub.png'
+
 const Navbar = () => {
   let { user, logOut } = useContext(authContext);
   let location = useLocation();
@@ -87,7 +90,7 @@ const Navbar = () => {
               }
             </ul>
           </div>
-          <Link className="btn btn-ghost text-xl">LearnHub</Link>
+          <Link className="btn btn-ghost text-xl"><img className=" max-w-10" src={logo} alt="learnhub" />LearnHub</Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 items-center">

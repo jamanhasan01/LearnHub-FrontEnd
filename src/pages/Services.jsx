@@ -4,7 +4,7 @@ import Service from "../components/Service"
 import { authContext } from "../provider/AuthProvider"
 import Loading from "../components/Loading"
 import NoService from "../components/NoService"
-import { Helmet } from "react-helmet-async";
+
 
 const Services = () => {
   let {setLoading,loading}=useContext(authContext)

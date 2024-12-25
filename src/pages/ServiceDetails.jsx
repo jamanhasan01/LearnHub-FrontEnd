@@ -98,8 +98,9 @@ const ServiceDetails = () => {
                   name="ServiceId"
                   placeholder="Service Id"
                   className="input input-bordered"
-                  value={id}
-                  
+         
+                  defaultValue={id}
+                  readOnly
                   required
                 />
               </div>
@@ -113,8 +114,8 @@ const ServiceDetails = () => {
                   name="email"
                   placeholder="email"
                   className="input input-bordered"
-                  value={author_email}
-                 
+                  defaultValue={author_email}
+                  readOnly
                   required
                 />
               </div>
@@ -130,8 +131,8 @@ const ServiceDetails = () => {
                   name="price"
                   placeholder="price"
                   className="input input-bordered"
-                  value={price}
-                  
+                  defaultValue={price}
+                  readOnly
                   required
                 />
               </div>
@@ -145,8 +146,8 @@ const ServiceDetails = () => {
                   name="name"
                   placeholder="name"
                   className="input input-bordered"
-                  value={name}
-                  
+                  defaultValue={name}
+                  readOnly
                   required
                 />
               </div>
@@ -162,7 +163,8 @@ const ServiceDetails = () => {
                   name="photoUrl"
                   placeholder="Photo"
                   className="input input-bordered"
-                  value={photoUrl}
+                  defaultValue={photoUrl}
+                  readOnly
                   
                   required
                 />
@@ -179,8 +181,8 @@ const ServiceDetails = () => {
                   name="userName"
                   placeholder="Your Name"
                   className="input input-bordered"
-                  value={user?.displayName}
-                  
+                  defaultValue={user?.displayName}
+                  readOnly
                   required
                 />
               </div>
@@ -193,8 +195,8 @@ const ServiceDetails = () => {
                   name="userEmail"
                   placeholder="Your email"
                   className="input input-bordered"
-                  value={user?.email}
-                  
+                  defaultValue={user?.email}
+                  readOnly
                   required
                 />
               </div>
