@@ -24,10 +24,10 @@ const Tabs = () => {
     <div className="mt-20">
       <h1 className="text-4xl mb-10 font-semibold text-center">Category  Services</h1>
       {/* Tab headers */}
-      <div role="tablist" className="tabs tabs-lifted">
+      <div role="tablist" className="tabs tabs-lifted ">
         <button
           onClick={() => handleTabClick("english")}
-          className={`tab ${activeTab === "english" ? "tab-active" : ""}`}
+          className={`tab ${activeTab === "english" ? "tab-active !border-2 !border-b-0" : ""}`}
           role="tab"
           aria-selected={activeTab === "english"}
         >
@@ -35,7 +35,7 @@ const Tabs = () => {
         </button>
         <button
           onClick={() => handleTabClick("bangla")}
-          className={`tab ${activeTab === "bangla" ? "tab-active" : ""}`}
+          className={`tab ${activeTab === "bangla" ? "tab-active !border-2 !border-b-0" : ""}`}
           role="tab"
           aria-selected={activeTab === "bangla"}
         >
@@ -43,7 +43,7 @@ const Tabs = () => {
         </button>
         <button
           onClick={() => handleTabClick("programming")}
-          className={`tab ${activeTab === "programming" ? "tab-active" : ""}`}
+          className={`tab ${activeTab === "programming" ? "tab-active !border-2 !border-b-0" : ""}`}
           role="tab"
           aria-selected={activeTab === "programming"}
         >

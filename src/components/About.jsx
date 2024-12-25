@@ -7,11 +7,8 @@ const About = () => {
     <section className=" py-16 px-6">
       <div className="container mx-auto max-w-4xl text-center">
         {/* Title Section */}
-        <h2 className="text-4xl font-bold text-gray-800 mb-4">About Us</h2>
-        <p className="text-gray-600 text-lg mb-8">
-          At LearnHub, we specialize in helping students excel in programming, English, and Bangla. 
-          Our goal is to empower learners with the skills they need for success.
-        </p>
+        <h2 className="text-4xl text-center font-semibold mb-10">About Us</h2>
+   
 
         {/* Features Section */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">

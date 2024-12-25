@@ -2,15 +2,38 @@ import { useState, useEffect, useRef, useContext } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { FaChevronDown } from "react-icons/fa";
 import { authContext } from "../provider/AuthProvider";
+import { IoMdSunny } from "react-icons/io";
+import { FaMoon } from "react-icons/fa";
 
 import logo from '../assets/learnhub.png'
 
 const Navbar = () => {
   let { user, logOut } = useContext(authContext);
   let location = useLocation();
+
+  const [showModeIcon, setshowModeIcon] = useState(false)
+
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+console.log(showModeIcon);
+
+  let handleMoodOfTheme=()=>{
+    let html=document.querySelector('html')
+    if (html) {
+      let currentTheme=html.getAttribute('data-theme')
+      if (currentTheme=='light') {
+        html.setAttribute('data-theme','dark')
+        console.log('dark');
+        
+      }
+      else if(currentTheme=="dark"){
+        html.setAttribute('data-theme','light')
+        console.log('light');
+      }
+    }
+    setshowModeIcon(!showModeIcon)
+  }
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {
@@ -114,7 +137,12 @@ const Navbar = () => {
           </ul>
         </div>
         <div className="navbar-end">
+        <button className="text-2xl mr-3" onClick={handleMoodOfTheme}>
+            {showModeIcon? <IoMdSunny></IoMdSunny> :<FaMoon></FaMoon>}
+          </button>
           {user ? (
+            <div className="flex">
+             
             <div className="flex btn btn-ghost avatar ">
               <div  className="w-10 rounded-full border-gray-300 border">
                 <img title={`${user?.displayName}`}
@@ -123,9 +151,12 @@ const Navbar = () => {
                   src={`${user.photoURL}`}
                 />
               </div>
-              <button onClick={logOut} className="btn">
+            
+            </div>
+            <button onClick={logOut} className="btn">
                 Logout
               </button>
+             
             </div>
           ) : (
             <div>
