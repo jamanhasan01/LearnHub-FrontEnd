@@ -34,7 +34,7 @@ const PopularService = () => {
               to={"/services"}
               className="btn text-center bg-black text-white"
             >
-              View All
+              Show All
             </Link>
           </div>
         </div>

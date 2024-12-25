@@ -51,11 +51,11 @@ let router=createBrowserRouter([
             },
             {
                 path:'/bookedservices',
-                element:<BookedServies></BookedServies>
+                element:<PrivetRouter><BookedServies></BookedServies></PrivetRouter>
             },
             {
                 path:'/servicetodo',
-                element:<ServiceToDo></ServiceToDo>
+                element:<PrivetRouter><ServiceToDo></ServiceToDo></PrivetRouter> 
             },
             {
                 path:'/signin',

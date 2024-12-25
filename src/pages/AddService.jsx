@@ -2,36 +2,33 @@ import { useContext } from "react";
 import { authContext } from "../provider/AuthProvider";
 import axios from "axios";
 import { toast } from "react-toastify";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const AddService = () => {
-    let {user}=useContext(authContext)
-    let location=useLocation()
-    console.log(location);
-    
+  let { user } = useContext(authContext);
+  let navigate=useNavigate()
+  let location = useLocation();
+  console.log(location);
 
-    let handleAddService=(e)=>{
-        e.preventDefault()
-        
-        
-        let form=new FormData(e.target)
-        let formData=Object.fromEntries(form.entries())
-        let serviceData={...formData}
+  let handleAddService = (e) => {
+    e.preventDefault();
 
-        // get data input form user
-        serviceData.author_email=user.email
-        serviceData.auther_name=user.displayName
-        serviceData.auther_photo=user.photoURL
+    let form = new FormData(e.target);
+    let formData = Object.fromEntries(form.entries());
+    let serviceData = { ...formData };
 
-        axios.post("http://localhost:5000/services",serviceData)
-        .then(res=>{
-           if(res.data.insertedId){
-                toast.success('data has been added successfully')
-           }
-        })
-        
-    }
-    
+    // get data input form user
+    serviceData.author_email = user.email;
+    serviceData.auther_name = user.displayName;
+    serviceData.auther_photo = user.photoURL;
+
+    axios.post("http://localhost:5000/services", serviceData).then((res) => {
+      if (res.data.insertedId) {
+        toast.success("data has been added successfully");
+        navigate('/services')
+      }
+    });
+  };
 
   return (
     <div>
@@ -94,12 +91,33 @@ const AddService = () => {
             </div>
           </div>
           {/* row  */}
-          <div className="form-control">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="form-control">
               <label className="label">
                 <span className="label-text">Description</span>
               </label>
-            <textarea name="description" id=""  className="input input-bordered"></textarea>
+              <textarea
+                name="description"
+                id=""
+                className="input input-bordered"
+              ></textarea>
             </div>
+            <div className="form-control">
+              <label className="label">
+                <span className="label-text">Category</span>
+              </label>
+              <select
+                name="category"
+                id="description"
+                className="input input-bordered"
+              >
+                <option value="english">English</option>
+                <option value="bangla">Bangla</option>
+                <option value="programming">Programming</option>
+              </select>
+            </div>
+          </div>
+
           <div className="form-control mt-6">
             <button className="btn bg-black text-white hover:bg-black/80">
               Add Service

@@ -90,7 +90,7 @@ const Navbar = () => {
               }
             </ul>
           </div>
-          <Link className="btn btn-ghost text-xl"><img className=" max-w-10" src={logo} alt="learnhub" />LearnHub</Link>
+          <Link className="btn btn-ghost text-xl"><img className=" max-w-10" src={logo} alt="learnhub" /><span className="md:block hidden">LearnHub</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
           <ul className="menu menu-horizontal px-1 items-center">
@@ -119,6 +119,7 @@ const Navbar = () => {
               <div  className="w-10 rounded-full border-gray-300 border">
                 <img title={`${user?.displayName}`}
                   alt="Tailwind CSS Navbar component"
+                  referrerPolicy="no-referrer"
                   src={`${user.photoURL}`}
                 />
               </div>
@@ -146,9 +147,3 @@ const Navbar = () => {
 };
 
 export default Navbar;
-
-{
-  /* <Link to={"/signin"} className="btn">
-            Login
-          </Link> */
-}
