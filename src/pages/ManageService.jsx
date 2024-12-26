@@ -9,7 +9,7 @@ const ManageService = () => {
   let {user}=useContext(authContext)
   const [manageData, setmanageData] = useState([])
   useEffect(()=>{
-    axios.get(`http://localhost:5000/manage/${user?.email}`)
+    axios.get(`http://localhost:5000/manage/${user?.email}`,{withCredentials:true})
     .then(res=>{
       let data=res.data
 

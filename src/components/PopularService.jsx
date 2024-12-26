@@ -8,7 +8,7 @@ const PopularService = () => {
   const [serviceData, setserviceData] = useState([]);
   let { setLoading } = useContext(authContext);
   useEffect(() => {
-    axios.get("http://localhost:5000/services").then((res) => {
+    axios.get("http://localhost:5000/services",{withCredentials:true}).then((res) => {
       let data = res.data;
       let dataSalice = data.slice(0, 6);
       setserviceData(dataSalice);

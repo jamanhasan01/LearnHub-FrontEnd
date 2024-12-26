@@ -12,7 +12,7 @@ const ServiceDetails = () => {
   const [serviceData, setserviceData] = useState({});
 
   useEffect(() => {
-    axios.get(`http://localhost:5000/services/${id}`).then((res) => {
+    axios.get(`http://localhost:5000/services/${id}`,{withCredentials:true}).then((res) => {
       let data = res.data;
       setserviceData(data);
       setLoading(false);

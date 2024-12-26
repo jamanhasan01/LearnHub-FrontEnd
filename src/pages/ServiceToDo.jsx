@@ -10,7 +10,7 @@ const ServiceToDo = () => {
   let {user}=useContext(authContext)
   let  [bookedData, setbookedData] = useState([])
   useEffect(()=>{
-    axios.get(`http://localhost:5000/managebookedEmail/${user?.email}`)
+    axios.get(`http://localhost:5000/managebookedEmail/${user?.email}`,{withCredentials:true})
     .then((res)=>{
       let data=res.data
       setbookedData(data)

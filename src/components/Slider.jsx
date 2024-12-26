@@ -15,7 +15,7 @@ const Slider = () => {
     {
       id: 2,
       image: slider2,
-      title: "Excel in Mathematics",
+      title: "Excel in Programming",
       description: "Where Numbers Make Sense.Building Strong Foundations for Problem Solving",
     },
     {

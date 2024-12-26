@@ -2,9 +2,10 @@ import { useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import axios from "axios";
 
 const SignIn = () => {
-  let { loginWithGoogle, setuser, setLoading, signInUser } =
+  let { loginWithGoogle, setuser, setLoading, signInUser ,user} =
     useContext(authContext);
 
   let navigate = useNavigate();

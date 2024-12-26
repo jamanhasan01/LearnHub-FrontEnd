@@ -8,7 +8,7 @@ const BookedServies = () => {
   let {user,setLoading}=useContext(authContext)
   let  [bookedData, setbookedData] = useState([])
   useEffect(()=>{
-    axios.get(`http://localhost:5000/booked/${user?.email}`)
+    axios.get(`http://localhost:5000/booked/${user?.email}`,{withCredentials:true})
     .then(res=>{
       let data=res.data
       setbookedData(data)
