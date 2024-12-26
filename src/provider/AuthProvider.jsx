@@ -7,8 +7,10 @@ import {
   signInWithEmailAndPassword,
   signInWithPopup,
   signOut,
+  updateProfile,
 } from "firebase/auth";
 import axios from "axios";
+import { toast } from "react-toastify";
 
 export let authContext = createContext();
 
@@ -17,15 +19,19 @@ const AuthProvider = ({ children }) => {
   let [loading, setLoading] = useState(true);
 
   let googleProvider = new GoogleAuthProvider();
+
   let loginWithGoogle = () => {
     setLoading(true);
     return signInWithPopup(auth, googleProvider);
   };
 
   let createUser = (email, password) => {
+   
     return createUserWithEmailAndPassword(auth, email, password);
   };
+
   let signInUser = (email, password) => {
+
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -33,30 +39,39 @@ const AuthProvider = ({ children }) => {
     return signOut(auth);
   };
 
+  let updateUserProfile=(updatedData)=>{
+    return updateProfile(auth.currentUser,updatedData)
+  }
+
   useEffect(() => {
-    let unsubcribe = onAuthStateChanged(auth, async(currentUser) => {
-     if (currentUser?.email) {
-      setuser(currentUser);
-      await axios.post(`https://learn-hub-server-side.vercel.app/jwt`,{email:currentUser.email},{withCredentials:true})
-      .then(res=>console.log(res.data)
-      )
-     
+    const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
+      setLoading(true);
+      if (currentUser?.email) {
+        setuser(currentUser);
+        axios
+          .post(
+            `https://learn-hub-server-side.vercel.app/jwt`,
+            { email: currentUser.email },
+            { withCredentials: true }
+          )
+          .then((res) => console.log(res.data))
+          .catch((err) => console.error("Error fetching JWT:", err));
+      } else {
+        setuser(currentUser);
+        axios
+          .get(`https://learn-hub-server-side.vercel.app/logout`, {
+            withCredentials: true,
+          })
+          .then((res) => console.log(res.data))
+          .catch((err) => toast.error("Error logging out:", err));
+      }
       setLoading(false);
-     }
-     else{
-      console.log(currentUser);
-      
-      setuser(currentUser)
-      setLoading(false)
-      await axios.get(`https://learn-hub-server-side.vercel.app/logout`,{withCredentials:true})
-      .then(res=>console.log(res.data)
-      )
-     }
     });
-    return () => unsubcribe();
+
+    return () => unsubscribe();
   }, []);
 
-  console.log(user);
+  
 
   let authInfo = {
     loginWithGoogle,
@@ -67,10 +82,10 @@ const AuthProvider = ({ children }) => {
     createUser,
     signInUser,
     logOut,
+    updateUserProfile
   };
-  return (
-    <authContext.Provider value={authInfo}>{children}</authContext.Provider>
-  );
+
+  return <authContext.Provider value={authInfo}>{children}</authContext.Provider>;
 };
 
 export default AuthProvider;

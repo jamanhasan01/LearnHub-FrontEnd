@@ -17,7 +17,7 @@ const ServiceToDoManage = ({ manage }) => {
 
   return (
     <div className="flex flex-col gap-2 p-5 border border-gray-200 rounded-xl">
-      <img src={photoUrl} alt={name} />
+      <img className="rounded-xl max-h-[200px] object-cover" src={photoUrl} alt={name} />
       <div className="flex justify-between">
         <h3 className="text-2xl font-bold"> Name : {name}</h3>
       </div>

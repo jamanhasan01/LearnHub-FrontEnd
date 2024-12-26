@@ -17,8 +17,7 @@ const PopularService = () => {
     });
   }, [loading]);
 
-  console.log(loading);
-  
+
   return (
     <div>
      

@@ -1,11 +1,12 @@
-import { useContext } from "react";
+import { useState, useContext } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
-import axios from "axios";
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const SignIn = () => {
-  let { loginWithGoogle, setuser, setLoading, signInUser ,user} =
+  const [showPassword, setShowPassword] = useState(false);
+  let { loginWithGoogle, setuser, setLoading, signInUser } =
     useContext(authContext);
 
   let navigate = useNavigate();
@@ -19,7 +20,7 @@ const SignIn = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+        toast.error(error.code);
       });
   };
 
@@ -39,10 +40,10 @@ const SignIn = () => {
         navigate("/");
       })
       .catch((error) => {
-        console.log(error);
+ 
         toast.warn(
-          error.code == "auth/missing-email"
-            ? "This email already user With google login"
+          error.code === "auth/missing-email"
+            ? "This email already used with Google login"
             : error.code
         );
       });
@@ -50,9 +51,9 @@ const SignIn = () => {
 
   return (
     <div>
-      <div className=" mx-auto w-full max-w-sm  shadow-2xl my-20 p-5">
+      <div className="mx-auto w-full max-w-sm shadow-2xl my-20 p-5">
         <h1 className="text-4xl font-bold text-center">Login now!</h1>
-        <form onSubmit={handleSignIn} className="">
+        <form onSubmit={handleSignIn}>
           <div className="form-control">
             <label className="label">
               <span className="label-text">Email</span>
@@ -65,17 +66,23 @@ const SignIn = () => {
               required
             />
           </div>
-          <div className="form-control">
+          <div className="form-control relative">
             <label className="label">
               <span className="label-text">Password</span>
             </label>
             <input
-              type="password"
+              type={showPassword ? "text" : "password"}
               name="password"
               placeholder="password"
               className="input input-bordered"
               required
             />
+            <span
+              className="absolute right-3 top-12 cursor-pointer"
+              onClick={() => setShowPassword(!showPassword)}
+            >
+              {showPassword ? <FaEye /> : <FaEyeSlash />}
+            </span>
             <label className="label">
               <a href="#" className="label-text-alt link link-hover">
                 Forgot password?
@@ -96,8 +103,8 @@ const SignIn = () => {
           Login With Google
         </button>
         <div className="text-center">
-          don't you have any account?
-          <Link className=" font-semibold" to="/signup">
+          Don't have an account?
+          <Link className="font-semibold" to="/signup">
             Register
           </Link>
         </div>

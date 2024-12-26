@@ -8,7 +8,7 @@ const AddService = () => {
   let { user } = useContext(authContext);
   let navigate=useNavigate()
   let location = useLocation();
-  console.log(location);
+
 
   let handleAddService = (e) => {
     e.preventDefault();

@@ -16,7 +16,7 @@ const ServiceToDoUpdate = () => {
         setdata(data)
     })
   },[id])
-  console.log(data);
+
   
 
   let handleStatusChange = (e) => {
@@ -31,7 +31,7 @@ const ServiceToDoUpdate = () => {
       },{withCredentials:true})
       .then((res) => {
         let data = res.data;
-        console.log("Update Response:", data);
+  
         if (data.modifiedCount > 0) {
           toast.success("Status updated successfully!");
           navigate('/servicetodo')

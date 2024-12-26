@@ -9,7 +9,7 @@ const Service = ({ service }) => {
     
   return (
     <div className="flex flex-col gap-2 p-3 border border-gray-200 rounded-xl">
-      <img className="rounded-xl" referrerPolicy="no-referrer" src={photoUrl} alt={name} />
+      <img className="rounded-xl max-h-[200px] object-cover" referrerPolicy="no-referrer" src={photoUrl} alt={name} />
       <h3 className="text-2xl font-bold">{name}</h3>
       <p className="text-base font-semibold text-gray-600">
         {description ? description.substring(0, 100) : "no description avealbe"}
@@ -26,7 +26,7 @@ const Service = ({ service }) => {
       </div>
       
      
-      <Link to={user?`/servicedetails/${_id}`:'/signin'}>
+      <Link to={`/servicedetails/${_id}`}>
       <button className="btn bg-black text-white">View Details</button>
       </Link> 
     </div>

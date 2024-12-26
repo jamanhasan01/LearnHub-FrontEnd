@@ -26,14 +26,14 @@ const UpdateService = () => {
 
         let form=new FormData(e.target)
         let formData=Object.fromEntries(form.entries())
-        console.log(formData);
+ 
         
         axios.put(`https://learn-hub-server-side.vercel.app/services/${id}`,formData,{withCredentials:true})
         .then(res=>{
             let data=res.data
             if (data.modifiedCount) {
                 toast.success('Update Successfully')
-                navigate('/services')
+                navigate('/manageservice')
             }
             
         })

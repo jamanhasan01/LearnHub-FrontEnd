@@ -1,8 +1,14 @@
-# React + Vite
+website_name==> LearnHub
+website_url==> learnhub01.surge.sh
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+5 feature of my website =>
 
-Currently, two official plugins are available:
+1.user can (add,deleted,update) service which one he has provide
+2.user can purchase service which one provide other person
+3.there are theme added like (dark,light)
+4.if some one purchase user product user can change status of that product
+5.implement jwt token for data sequrty
+6.login logout system 
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+
+category ==> Education Service

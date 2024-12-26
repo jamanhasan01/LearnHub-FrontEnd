@@ -26,7 +26,7 @@ const ServiceDetails = () => {
     e.preventDefault();
     let form = new FormData(e.target);
     let purchaseData =Object.fromEntries(form.entries());
-    console.log(purchaseData);
+   
     let newPurchaseData={...purchaseData}
    
     

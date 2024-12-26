@@ -16,7 +16,7 @@ const Navbar = () => {
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
-console.log(showModeIcon);
+
 
   let handleMoodOfTheme=()=>{
     let html=document.querySelector('html')
@@ -24,12 +24,12 @@ console.log(showModeIcon);
       let currentTheme=html.getAttribute('data-theme')
       if (currentTheme=='light') {
         html.setAttribute('data-theme','dark')
-        console.log('dark');
+       
         
       }
       else if(currentTheme=="dark"){
         html.setAttribute('data-theme','light')
-        console.log('light');
+        
       }
     }
     setshowModeIcon(!showModeIcon)
@@ -148,7 +148,7 @@ console.log(showModeIcon);
                 <img title={`${user?.displayName}`}
                   alt="Tailwind CSS Navbar component"
                   referrerPolicy="no-referrer"
-                  src={`${user.photoURL}`}
+                  src={`${user?.photoURL}`}
                 />
               </div>
             

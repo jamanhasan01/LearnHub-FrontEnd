@@ -20,7 +20,7 @@ const ServiceToDo = () => {
  
   return (
     <div>
-      <h2 className="text-4xl text-center font-semibold mb-10">Service To Do {bookedData.length}</h2>
+      <h2 className="text-4xl text-center font-semibold mb-10">Service To Do</h2>
       {bookedData.length?
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {bookedData.map((manage)=>(
@@ -35,4 +35,4 @@ const ServiceToDo = () => {
 
 export default ServiceToDo
 
-// https://learn-hub-server-side.vercel.app/booked/jamanhasan246@gmail.com
+// booked/jamanhasan246@gmail.com
