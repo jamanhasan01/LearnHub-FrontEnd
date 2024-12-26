@@ -13,7 +13,7 @@ const Tabs = () => {
 
   };
   useEffect(()=>{
-    axios.get(`http://localhost:5000/${activeTab}`,{withCredentials:true})
+    axios.get(`http://localhost:5000/${activeTab}`,)
     .then(res=>setcetagoryData(res.data)
     )
   },[activeTab])

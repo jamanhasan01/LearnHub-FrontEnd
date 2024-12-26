@@ -27,7 +27,7 @@ const ServiceToDoUpdate = () => {
     axios
       .patch(`http://localhost:5000/booked/${id}`, {
         ServiceStatus
-      })
+      },{withCredentials:true})
       .then((res) => {
         let data = res.data;
         console.log("Update Response:", data);

@@ -47,6 +47,7 @@ const AuthProvider = ({ children }) => {
       console.log(currentUser);
       
       setuser(currentUser)
+      setLoading(false)
       await axios.get(`http://localhost:5000/logout`,{withCredentials:true})
       .then(res=>console.log(res.data)
       )

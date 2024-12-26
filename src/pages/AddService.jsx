@@ -22,7 +22,7 @@ const AddService = () => {
     serviceData.auther_name = user.displayName;
     serviceData.auther_photo = user.photoURL;
 
-    axios.post("http://localhost:5000/services", serviceData).then((res) => {
+    axios.post("http://localhost:5000/services", serviceData,{withCredentials:true}).then((res) => {
       if (res.data.insertedId) {
         toast.success("data has been added successfully");
         navigate('/services')

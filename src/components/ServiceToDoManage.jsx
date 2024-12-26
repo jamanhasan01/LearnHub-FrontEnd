@@ -1,6 +1,6 @@
-import axios from "axios";
+
 import { Link } from "react-router-dom";
-import { toast } from "react-toastify";
+
 
 const ServiceToDoManage = ({ manage }) => {
   let {

@@ -6,26 +6,29 @@ import { authContext } from "../provider/AuthProvider";
 
 const PopularService = () => {
   const [serviceData, setserviceData] = useState([]);
-  let { setLoading } = useContext(authContext);
+  let { setLoading ,loading} = useContext(authContext);
+  
   useEffect(() => {
-    axios.get("http://localhost:5000/services",{withCredentials:true}).then((res) => {
+    axios.get("http://localhost:5000/services").then((res) => {
       let data = res.data;
-      let dataSalice = data.slice(0, 6);
-      setserviceData(dataSalice);
+      setLoading(true)
+      setserviceData(data);
       setLoading(false);
     });
-  }, [serviceData]);
+  }, [loading]);
 
+  console.log(loading);
+  
   return (
     <div>
-      {serviceData.length > 0 && (
+     
         <div>
           <h1 className="text-4xl text-center font-semibold mb-10">
             Popular Service
           </h1>
 
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-            {serviceData.map((service) => (
+            {serviceData.slice(0,6).map((service) => (
               <Service key={service._id} service={service}></Service>
             ))}
           </div>
@@ -38,7 +41,7 @@ const PopularService = () => {
             </Link>
           </div>
         </div>
-      )}
+      
     </div>
   );
 };

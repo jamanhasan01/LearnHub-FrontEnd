@@ -1,9 +1,11 @@
 
+import { useContext } from "react";
 import { Link,  } from "react-router-dom";
+import { authContext } from "../provider/AuthProvider";
 
 const Service = ({ service }) => {
   let {_id, photoUrl, name, description, auther_photo, auther_name ,price,Area} = service;
-  
+  let {user}=useContext(authContext)
     
   return (
     <div className="flex flex-col gap-2 p-3 border border-gray-200 rounded-xl">
@@ -24,9 +26,9 @@ const Service = ({ service }) => {
       </div>
       
      
-      <Link to={`/servicedetails/${_id}`}>
+      <Link to={user?`/servicedetails/${_id}`:'/signin'}>
       <button className="btn bg-black text-white">View Details</button>
-</Link> 
+      </Link> 
     </div>
   );
 };

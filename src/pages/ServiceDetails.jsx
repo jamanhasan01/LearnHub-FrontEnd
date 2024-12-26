@@ -3,7 +3,7 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
-import { Helmet } from "react-helmet-async";
+
 
 const ServiceDetails = () => {
   let { setLoading, user } = useContext(authContext);
@@ -31,7 +31,7 @@ const ServiceDetails = () => {
     newPurchaseData.auther_photo=serviceData.auther_photo
     newPurchaseData.auther_name=serviceData.auther_name
     
-    axios.post("http://localhost:5000/booked", newPurchaseData).then((res) => {
+    axios.post("http://localhost:5000/booked", newPurchaseData,{withCredentials:true}).then((res) => {
       let data = res.data;
 
       

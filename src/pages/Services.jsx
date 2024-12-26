@@ -22,7 +22,7 @@ const Services = () => {
 
 
   useEffect(()=>{
-    axios.get('http://localhost:5000/services',{withCredentials:true})
+    axios.get('http://localhost:5000/services')
     .then((res)=>{
       let data=res.data
       setserviceData(data);

@@ -7,7 +7,7 @@ const Manage = ({manage}) => {
  
     
     let handleDelete=(id)=>{
-        axios.delete(`http://localhost:5000/services/${id}`)
+        axios.delete(`http://localhost:5000/services/${id}`,{withCredentials:true})
         .then(res=>{
             let data=res.data
             if (data.deletedCount) {

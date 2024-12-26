@@ -11,7 +11,7 @@ const UpdateService = () => {
     const [data, setdata] = useState({})
     let {id}=useParams()
     useEffect(()=>{
-        axios.get(`http://localhost:5000/services/${id}`)
+        axios.get(`http://localhost:5000/services/${id}`,{withCredentials:true})
         .then(res=>{
             let data=res.data
             setdata(data)
@@ -28,7 +28,7 @@ const UpdateService = () => {
         let formData=Object.fromEntries(form.entries())
         console.log(formData);
         
-        axios.put(`http://localhost:5000/services/${id}`,formData)
+        axios.put(`http://localhost:5000/services/${id}`,formData,{withCredentials:true})
         .then(res=>{
             let data=res.data
             if (data.modifiedCount) {
