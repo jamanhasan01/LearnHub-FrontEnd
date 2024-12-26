@@ -8,7 +8,7 @@ const BookedServies = () => {
   let {user,setLoading}=useContext(authContext)
   let  [bookedData, setbookedData] = useState([])
   useEffect(()=>{
-    axios.get(`http://localhost:5000/booked/${user?.email}`,{withCredentials:true})
+    axios.get(`https://learn-hub-server-side.vercel.app/booked/${user?.email}`,{withCredentials:true})
     .then(res=>{
       let data=res.data
       setbookedData(data)

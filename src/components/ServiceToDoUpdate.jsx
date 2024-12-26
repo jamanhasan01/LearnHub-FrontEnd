@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { useLocation, useNavigate, useParams } from "react-router-dom";
+import {  useNavigate, useParams } from "react-router-dom";
+
 import { toast } from "react-toastify";
 
 const ServiceToDoUpdate = () => {
@@ -9,7 +10,7 @@ const ServiceToDoUpdate = () => {
     let navigate=useNavigate()
     let {ServiceStatus}=data
   useEffect(()=>{
-    axios.get(`http://localhost:5000/managebookedId/${id}`,{withCredentials:true})
+    axios.get(`https://learn-hub-server-side.vercel.app/managebookedId/${id}`,{withCredentials:true})
     .then(res=>{
         let data=res.data
         setdata(data)
@@ -25,7 +26,7 @@ const ServiceToDoUpdate = () => {
     let status = form.get("status");
     ServiceStatus=status
     axios
-      .patch(`http://localhost:5000/booked/${id}`, {
+      .patch(`https://learn-hub-server-side.vercel.app/booked/${id}`, {
         ServiceStatus
       },{withCredentials:true})
       .then((res) => {

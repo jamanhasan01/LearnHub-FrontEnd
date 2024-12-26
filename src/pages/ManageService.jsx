@@ -9,7 +9,7 @@ const ManageService = () => {
   let {user}=useContext(authContext)
   const [manageData, setmanageData] = useState([])
   useEffect(()=>{
-    axios.get(`http://localhost:5000/manage/${user?.email}`,{withCredentials:true})
+    axios.get(`https://learn-hub-server-side.vercel.app/manage/${user?.email}`,{withCredentials:true})
     .then(res=>{
       let data=res.data
 

@@ -13,7 +13,7 @@ const Tabs = () => {
 
   };
   useEffect(()=>{
-    axios.get(`http://localhost:5000/${activeTab}`,)
+    axios.get(`https://learn-hub-server-side.vercel.app/${activeTab}`,)
     .then(res=>setcetagoryData(res.data)
     )
   },[activeTab])

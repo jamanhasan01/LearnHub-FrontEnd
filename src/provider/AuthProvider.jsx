@@ -37,7 +37,7 @@ const AuthProvider = ({ children }) => {
     let unsubcribe = onAuthStateChanged(auth, async(currentUser) => {
      if (currentUser?.email) {
       setuser(currentUser);
-      await axios.post(`http://localhost:5000/jwt`,{email:currentUser.email},{withCredentials:true})
+      await axios.post(`https://learn-hub-server-side.vercel.app/jwt`,{email:currentUser.email},{withCredentials:true})
       .then(res=>console.log(res.data)
       )
      
@@ -48,7 +48,7 @@ const AuthProvider = ({ children }) => {
       
       setuser(currentUser)
       setLoading(false)
-      await axios.get(`http://localhost:5000/logout`,{withCredentials:true})
+      await axios.get(`https://learn-hub-server-side.vercel.app/logout`,{withCredentials:true})
       .then(res=>console.log(res.data)
       )
      }

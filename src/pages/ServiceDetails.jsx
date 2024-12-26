@@ -3,21 +3,24 @@ import { useContext, useEffect, useState } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import { authContext } from "../provider/AuthProvider";
 import { toast } from "react-toastify";
+import Loading from "../components/Loading";
 
 
 const ServiceDetails = () => {
-  let { setLoading, user } = useContext(authContext);
+  let { setLoading, user ,loading} = useContext(authContext);
   let { id } = useParams();
   let navigate = useNavigate();
   const [serviceData, setserviceData] = useState({});
 
+  
+
   useEffect(() => {
-    axios.get(`http://localhost:5000/services/${id}`,{withCredentials:true}).then((res) => {
+    axios.get(`https://learn-hub-server-side.vercel.app/services/${id}`,{withCredentials:true}).then((res) => {
       let data = res.data;
       setserviceData(data);
       setLoading(false);
     });
-  }, [id]);
+  }, [id,loading]);
 
   let handlePurchaseDate = (e) => {
     e.preventDefault();
@@ -31,7 +34,7 @@ const ServiceDetails = () => {
     newPurchaseData.auther_photo=serviceData.auther_photo
     newPurchaseData.auther_name=serviceData.auther_name
     
-    axios.post("http://localhost:5000/booked", newPurchaseData,{withCredentials:true}).then((res) => {
+    axios.post("https://learn-hub-server-side.vercel.app/booked", newPurchaseData,{withCredentials:true}).then((res) => {
       let data = res.data;
 
       
@@ -42,6 +45,9 @@ const ServiceDetails = () => {
     })
     .catch((error)=>toast.error(error.code))
   };
+  if (loading) {
+    return <Loading></Loading>
+  }
 
   let {
     photoUrl,

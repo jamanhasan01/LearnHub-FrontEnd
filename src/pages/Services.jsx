@@ -20,11 +20,12 @@ const Services = () => {
     
   }
 
-
+  
   useEffect(()=>{
-    axios.get('http://localhost:5000/services')
+    axios.get('https://learn-hub-server-side.vercel.app/services')
     .then((res)=>{
       let data=res.data
+      setLoading(true)
       setserviceData(data);
       setresult(data)
       setLoading(false)

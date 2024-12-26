@@ -1,5 +1,5 @@
 import { useContext } from "react";
-import { motion } from "framer-motion"; // Import motion from Framer Motion
+import { motion } from "framer-motion"; 
 import PopularService from "../components/PopularService";
 import Slider from "../components/Slider";
 import { authContext } from "../provider/AuthProvider";
@@ -9,8 +9,8 @@ import Tabs from "../components/Tabs";
 import About from "../components/About";
 
 const animationVariants = {
-  hidden: { opacity: 0, y: 100 }, // Start off-screen
-  visible: { opacity: 1, y: 0 },  // Smoothly appear and slide up
+  hidden: { opacity: 0, y: 100 }, 
+  visible: { opacity: 1, y: 0 },  
 };
 
 const Home = () => {
@@ -22,18 +22,16 @@ const Home = () => {
         <title>LearnHub || Home</title>
       </Helmet>
 
-      {/* Animated Slider */}
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }} // Allow repeating animations
-        transition={{ duration: 0.8 }}
+        viewport={{ once: false, amount: 0.2 }}
         variants={animationVariants}
       >
         <Slider />
       </motion.div>
 
-      {/* Animated PopularService */}
+
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -44,7 +42,7 @@ const Home = () => {
         {loading ? <Loading /> : <PopularService />}
       </motion.div>
 
-      {/* Animated Tabs */}
+
       <motion.div
         initial="hidden"
         whileInView="visible"
@@ -55,11 +53,11 @@ const Home = () => {
         <Tabs />
       </motion.div>
 
-      {/* Animated About Section */}
+  
       <motion.div
         initial="hidden"
         whileInView="visible"
-        viewport={{ once: false, amount: 0.2 }} // Allow repeating animations
+        viewport={{ once: false, amount: 0.2 }} 
         transition={{ duration: 0.8, delay: 0.6 }}
         variants={animationVariants}
       >

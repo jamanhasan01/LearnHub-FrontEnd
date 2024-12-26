@@ -9,7 +9,7 @@ const PopularService = () => {
   let { setLoading ,loading} = useContext(authContext);
   
   useEffect(() => {
-    axios.get("http://localhost:5000/services").then((res) => {
+    axios.get("https://learn-hub-server-side.vercel.app/services").then((res) => {
       let data = res.data;
       setLoading(true)
       setserviceData(data);
