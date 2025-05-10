@@ -48,7 +48,7 @@ const Services = () => {
         </form>
         {result.length>0?
         <>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
             {
               result.slice(0,showMoreData).map((service)=><Service key={service._id} service={service}></Service>)
             }
