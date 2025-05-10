@@ -53,7 +53,7 @@ const Tabs = () => {
 
       {/* Tab content */}
       {cetagoryData.length>0?
-      <div className="p-4 border border-gray-200 rounded-b-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+      <div className="p-4 border border-gray-200 rounded-b-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {cetagoryData.slice(0,6).map((service)=><Service key={service._id} service={service}></Service>)}
       </div>
       : <div className="py-20"><NoService></NoService></div>
