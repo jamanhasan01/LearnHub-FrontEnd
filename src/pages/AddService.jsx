@@ -31,8 +31,8 @@ const AddService = () => {
   };
 
   return (
-    <div>
-      <div className=" mx-auto w-full max-w-xl  shadow-2xl my-20 p-5 space-y-4">
+    <div className="container">
+      <div className=" shadow-2xl my-10 p-5 space-y-4">
         <h1 className="text-4xl font-bold text-center">Add Service</h1>
         <form onSubmit={handleAddService}>
           {/* row  */}

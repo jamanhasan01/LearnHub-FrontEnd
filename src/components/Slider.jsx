@@ -55,7 +55,7 @@ const Slider = () => {
         {slides.map((slide) => (
           <div
             key={slide.id}
-            className="w-full flex-shrink-0 relative h-[600px] md:h-[500px]"
+            className="w-full flex-shrink-0 relative h-[400px] md:h-[500px]"
           >
             {/* Slide Background Image */}
             <img

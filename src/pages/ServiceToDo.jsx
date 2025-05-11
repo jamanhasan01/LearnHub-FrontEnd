@@ -19,7 +19,7 @@ const ServiceToDo = () => {
   },[user])
  
   return (
-    <div>
+    <div className="container mt-16">
       <h2 className="text-4xl text-center font-semibold mb-10">Service To Do</h2>
       {bookedData.length?
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">

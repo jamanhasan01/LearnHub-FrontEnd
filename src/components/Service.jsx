@@ -9,7 +9,7 @@ const Service = ({ service }) => {
     
   return (
     <div className="flex flex-col gap-2 p-3 border border-gray-200 rounded-xl">
-      <img className="rounded-xl h-[180px] object-cover" referrerPolicy="no-referrer" src={photoUrl} alt={name} />
+      <img className="rounded-xl h-[160px] object-fill" referrerPolicy="no-referrer" src={photoUrl} alt={name} />
       <h3 className="text-xl font-bold">{name}</h3>
       <div className="flex justify-between">
       <div className="flex gap-2 items-center "> 

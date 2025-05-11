@@ -16,7 +16,7 @@ const BookedServies = () => {
     })
   },[user])
   return (
-    <div>
+    <div className="container mt-16">
       <h2 className="text-4xl text-center mb-10 font-semibold">Booked Services</h2>
       {bookedData.length>0?
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">

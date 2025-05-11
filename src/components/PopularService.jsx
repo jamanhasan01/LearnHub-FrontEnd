@@ -21,7 +21,7 @@ const PopularService = () => {
   return (
     <div>
      
-        <div>
+        <div className="container">
           <h1 className="text-4xl text-center font-semibold mb-10">
             Popular Service
           </h1>

@@ -4,7 +4,7 @@ import SocialMediaButtons from '../components/SocialMediaButtons';
 const Footer = () => {
   return (
     <div className="bg-gray-900 text-white">
-      <footer className="footer footer-center max-w-[1240px] mx-auto  rounded p-10">
+      <footer className="footer footer-center container  rounded p-10">
       <Link className="btn btn-ghost text-xl"><img className=" max-w-10" src={logo} alt="learnhub" /><span className="md:block hidden">LearnHub</span></Link>
    
         <nav>

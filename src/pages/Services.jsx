@@ -70,8 +70,8 @@ const Services = () => {
   }
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-4xl text-center font-semibold mb-10">All Services</h1>
+    <div className="container mt-16">
+      <h1 className="text-4xl text-center font-semibold mb-5">All Services</h1>
       
       {/* Search Input */}
       <div className="flex justify-center mb-10">
@@ -99,7 +99,7 @@ const Services = () => {
         <div className="text-center mt-10">
           <button
             onClick={() => setShowMoreData(prev => prev + 6)}
-            className="btn btn-primary px-8 py-3"
+            className="btn bg-black text-white px-8 py-3"
           >
             View More
           </button>

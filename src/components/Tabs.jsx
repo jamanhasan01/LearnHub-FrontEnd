@@ -21,7 +21,7 @@ const Tabs = () => {
   
 
   return (
-    <div className="mt-20">
+    <div className="container">
       <h1 className="text-4xl mb-10 font-semibold text-center">Category  Services</h1>
       {/* Tab headers */}
       <div role="tablist" className="tabs tabs-lifted ">

@@ -9,13 +9,27 @@ import logo from '../assets/learnhub.png'
 
 const Navbar = () => {
   let { user, logOut } = useContext(authContext);
+  const [navbarbg, setnavbarbg] = useState(false)
   let location = useLocation();
+
 
   const [showModeIcon, setshowModeIcon] = useState(false)
 
   const [dropdownOpen, setDropdownOpen] = useState(false);
   const dropdownRef = useRef(null);
 
+useEffect(() => {
+  const handleScroll = () => {
+    if (window.scrollY > 20) {
+      setnavbarbg(true);
+    } else {
+      setnavbarbg(false);
+    }
+  };
+
+  window.addEventListener("scroll", handleScroll);
+  return () => window.removeEventListener("scroll", handleScroll);
+}, []);
 
 
   let handleMoodOfTheme=()=>{
@@ -51,12 +65,12 @@ const Navbar = () => {
   const lists = (
     <>
       <li>
-        <Link className="!text-white" to={"/"}>
+        <Link className="" to={"/"}>
           Home
         </Link>
       </li>
       <li>
-        <Link className="!text-white" to={"/services"}>
+        <Link className="" to={"/services"}>
           Services
         </Link>
       </li>
@@ -81,7 +95,8 @@ const Navbar = () => {
   );
 
   return (
-    <div className="bg-gray-900 text-white fixed left-0 top-0 w-full z-10">
+<div className={`fixed left-0 top-0 w-full z-10 transition duration-300 ${navbarbg ? 'bg-white/80 shadow-md backdrop-blur text-[#4a2d72]' : 'bg-transparent text-[#4a2d72]'}`}>
+
       <div className="navbar max-w-[1240px] mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
@@ -103,7 +118,7 @@ const Navbar = () => {
             </div>
             <ul
               tabIndex={0}
-              className="menu menu-sm dropdown-content rounded-box bg-black mt-3 w-52 p-2 shadow"
+              className="menu menu-sm dropdown-content rounded-box  bg-black mt-3 w-52 p-2 shadow"
             >
               {lists}
               {user&&<li>
@@ -113,22 +128,22 @@ const Navbar = () => {
               }
             </ul>
           </div>
-          <Link className="btn btn-ghost text-xl"><img className=" max-w-10" src={logo} alt="learnhub" /><span className="md:block hidden">LearnHub</span></Link>
+          <Link className=" flex items-center text-xl font-semibold"><img className=" max-w-10" src={logo} alt="learnhub" /><span className="md:block hidden">LearnHub</span></Link>
         </div>
         <div className="navbar-center hidden lg:flex">
-          <ul className="menu menu-horizontal px-1 items-center">
+          <ul className="menu font-semibold text-base menu-horizontal px-1 items-center">
             {lists}
             {user&&
             <li ref={dropdownRef} className="relative">
               <button
-                className="!text-white"
+                className=""
                 onClick={() => setDropdownOpen((prev) => !prev)}
               >
                 Dashboard
                 <FaChevronDown />
               </button>
               {dropdownOpen && (
-                <ul className="absolute top-full mt-2 w-44 bg-white text-black rounded shadow-lg p-2">
+                <ul className="absolute top-full mt-2 w-44 bg-white  rounded shadow-lg p-2">
                   {dropdownLists}
                 </ul>
               )}
@@ -153,7 +168,7 @@ const Navbar = () => {
               </div>
             
             </div>
-            <button onClick={logOut} className="btn">
+            <button onClick={logOut} className="button">
                 Logout
               </button>
              
@@ -161,11 +176,11 @@ const Navbar = () => {
           ) : (
             <div>
               {location.pathname === "/signin" ? (
-                <Link to={"/signup"} className="btn">
+                <Link to={"/signup"} className="button  py-3">
                   Register
                 </Link>
               ) : (
-                <Link to={"/signin"} className="btn">
+                <Link to={"/signin"} className="!button py-3">
                   Login
                 </Link>
               )}

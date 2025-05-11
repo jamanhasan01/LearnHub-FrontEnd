@@ -41,7 +41,7 @@ const UpdateService = () => {
     }
     let {_id,photoUrl, name, description,price,Area} = data;
   return (
-    <div className=" mx-auto w-full max-w-xl  shadow-2xl my-20 p-5 space-y-4">
+    <div className=" container mt-20  shadow-2xl  p-5 space-y-4">
         <h1 className="text-4xl font-bold text-center">Update Service</h1>
         <form onSubmit={handleUpdate}>
           {/* row  */}

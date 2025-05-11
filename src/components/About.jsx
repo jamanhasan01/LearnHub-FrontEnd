@@ -4,8 +4,8 @@ import { Link } from "react-router-dom";
 
 const About = () => {
   return (
-    <section className=" py-16 px-6">
-      <div className="container mx-auto max-w-4xl text-center">
+    <section className="container">
+      <div className=" text-center">
         {/* Title Section */}
         <h2 className="text-4xl text-center font-semibold mb-10">About Us</h2>
    

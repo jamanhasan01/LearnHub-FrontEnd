@@ -8,8 +8,8 @@ export default {
   theme: {
     extend: {
         colors: {
-          mainClr:"black",
-          textClr:"white",
+          mainClr:"#4a2d72",
+          textClr:"#43CC68",
         },
   },
 },
