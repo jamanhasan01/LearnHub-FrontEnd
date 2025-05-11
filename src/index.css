@@ -7,6 +7,6 @@
         @apply  max-w-[1240px] mx-auto py-16
     }
     .button{
-        @apply px-4 py-2 bg-textClr text-white font-semibold rounded-md
+        @apply px-4 py-2 bg-textClr text-white font-semibold rounded-md hover:bg-opacity-90
     }
 }

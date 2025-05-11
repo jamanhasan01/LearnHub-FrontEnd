@@ -10,6 +10,7 @@ const Banner = () => {
             <h2 className='text-6xl font-semibold'>
               Shape Your <span className='text-textClr'>Destiny</span> with Expert-Led Course
             </h2>
+            <p className='font-medium'>Unlock premium courses in programming, English, Bangla, and more—taught by industry experts. Start learning today and build the future you deserve!</p>
            <Link to='/services'> <button className='button bg-textClr mt-6'>View All</button></Link>
           </div>
         </div>

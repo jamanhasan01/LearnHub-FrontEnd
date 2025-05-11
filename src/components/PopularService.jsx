@@ -34,7 +34,7 @@ const PopularService = () => {
           <div className="w-full mt-10 text-center">
             <Link
               to={"/services"}
-              className="btn text-center bg-black text-white"
+              className="button"
             >
               Show All
             </Link>

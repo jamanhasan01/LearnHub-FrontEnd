@@ -40,7 +40,7 @@ const About = () => {
           </div>
         </div>
         <Link to={'/services'}>
-        <button className="btn bg-black text-white mt-10">Show Services</button></Link>
+        <button className="button mt-10">Show Services</button></Link>
       </div>
     </section>
   );

@@ -24,7 +24,7 @@ const Service = ({ service }) => {
       
      
       <Link to={`/servicedetails/${_id}`}>
-      <button className="btn bg-black text-white w-full">View Details</button>
+      <button className="button   w-full">View Details</button>
       </Link> 
     </div>
   );
