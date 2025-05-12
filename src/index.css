@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer components{
-    .container {
-        @apply  max-w-[1240px] mx-auto py-16
-    }
-    .button{
-        @apply px-4 py-2 bg-textClr text-white font-semibold rounded-md hover:bg-opacity-90
-    }
+@layer components {
+  .container {
+    @apply max-w-[1240px] mx-auto py-16 px-4 md:px-0;
+  }
+  
+  .button {
+    @apply px-4 py-2 bg-textClr text-white font-semibold rounded-md 
+           hover:bg-opacity-90 transition-colors duration-300
+           dark:bg-secondary dark:hover:bg-opacity-80;
+  }
 }
+

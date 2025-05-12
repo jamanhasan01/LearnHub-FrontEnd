@@ -64,7 +64,7 @@ const Navbar = () => {
           className={({ isActive }) =>
             `px-2 py-1 rounded-none  focus:bg-transparent  transition duration-200 ${
               isActive
-                ? 'border-b-2 border-textClr text-indigo-700 font-semibold'
+                ? 'border-b-2 border-textClr !text-textClr  font-semibold'
                 : 'hover:bg-indigo-50'
             }`
           }
@@ -75,9 +75,9 @@ const Navbar = () => {
       <li>
         <NavLink
           className={({ isActive }) =>
-            `px-2 py-1 rounded-none transition duration-200 ${
+            `px-2 py-1 rounded-none transition focus:bg-transparent duration-200 ${
               isActive
-                ? 'border-b-2 border-textClr text-indigo-700 font-semibold'
+                ? 'border-b-2 border-textClr !text-textClr font-semibold'
                 : 'hover:bg-indigo-50'
             }`
           }

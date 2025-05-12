@@ -31,7 +31,7 @@ const About = () => {
           </div>
 
           {/* Bangla Card */}
-          <div className="bg-white shadow-md rounded-lg p-6 text-center">
+          <div className="bg-white dark:bg-black shadow-md rounded-lg p-6 text-center">
             <FaPenNib className="text-red-500 text-5xl mx-auto mb-4" />
             <h3 className="text-xl font-semibold text-gray-700">Bangla</h3>
             <p className="text-gray-600 mt-2">
