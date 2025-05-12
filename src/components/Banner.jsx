@@ -3,7 +3,13 @@ import banner from '../assets/hero-banner.jpg'
 import image from '../assets/hero-image.png'
 const Banner = () => {
   return (
-    <div className='h-screen w-full ' style={{ backgroundImage: `url(${banner})` }}>
+    <div className='h-screen w-full object-cover'       style={{ 
+        backgroundImage: `url(${banner})`,
+        backgroundSize: 'cover',
+        backgroundRepeat: 'no-repeat',
+        backgroundPosition: 'center'
+      }}
+>
       <div className='container grid grid-cols-1 md:grid-cols-2 h-full'>
         <div className='flex justify-start items-center h-full'>
           <div className='space-y-6'>

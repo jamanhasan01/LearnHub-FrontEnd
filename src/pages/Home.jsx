@@ -8,6 +8,7 @@ import { Helmet } from 'react-helmet-async'
 import Tabs from '../components/Tabs'
 import About from '../components/About'
 import Banner from '../components/Banner'
+import Teachers from '../components/Teachers'
 
 const animationVariants = {
   hidden: { opacity: 0, y: 100 },
@@ -53,6 +54,15 @@ const Home = () => {
         variants={animationVariants}
       >
         <About />
+      </motion.div>
+      <motion.div
+        initial='hidden'
+        whileInView='visible'
+        viewport={{ once: false, amount: 0.2 }}
+        transition={{ duration: 0.8, delay: 0.6 }}
+        variants={animationVariants}
+      >
+        <Teachers />
       </motion.div>
     </div>
   )
