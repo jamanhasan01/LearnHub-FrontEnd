@@ -24,10 +24,10 @@ const Tabs = () => {
     <div className="container">
       <h1 className="text-4xl mb-10 font-semibold text-center">Category  Services</h1>
       {/* Tab headers */}
-      <div role="tablist" className="tabs tabs-lifted ">
+      <div role="tablist" className="tabs tabs-lifted  !border-none">
         <button
           onClick={() => handleTabClick("english")}
-          className={`tab ${activeTab === "english" ? "tab-active !border-2 !border-b-0" : ""}`}
+          className={`tab ${activeTab === "english" ? "tab-active !border-1 !border-b-0" : ""}`}
           role="tab"
           aria-selected={activeTab === "english"}
         >
@@ -35,7 +35,7 @@ const Tabs = () => {
         </button>
         <button
           onClick={() => handleTabClick("bangla")}
-          className={`tab ${activeTab === "bangla" ? "tab-active !border-2 !border-b-0" : ""}`}
+          className={`tab ${activeTab === "bangla" ? "tab-active !border-1 !border-b-0" : ""}`}
           role="tab"
           aria-selected={activeTab === "bangla"}
         >
@@ -43,7 +43,7 @@ const Tabs = () => {
         </button>
         <button
           onClick={() => handleTabClick("programming")}
-          className={`tab ${activeTab === "programming" ? "tab-active !border-2 !border-b-0" : ""}`}
+          className={`tab ${activeTab === "programming" ? "tab-active  !border-1 !border-b-0" : ""}`}
           role="tab"
           aria-selected={activeTab === "programming"}
         >
@@ -53,7 +53,7 @@ const Tabs = () => {
 
       {/* Tab content */}
       {cetagoryData.length>0?
-      <div className="p-4 border border-gray-200 rounded-b-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+      <div className="p-4 border-none mt-10 border-gray-200 rounded-b-lg grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
         {cetagoryData.slice(0,6).map((service)=><Service key={service._id} service={service}></Service>)}
       </div>
       : <div className="py-20"><NoService></NoService></div>
