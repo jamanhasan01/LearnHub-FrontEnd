@@ -64,12 +64,12 @@ const ServiceDetails = () => {
   
 
   return (
-    <div className="max-w-xl mx-auto border border-gray-200 p-6 flex flex-col gap-2">
+    <div className="max-w-xl mx-auto border border-gray-200 p-6 flex flex-col gap-2 mt-32 my-20">
       <img src={photoUrl} alt="" />
-      <h2 className="text-4xl font-bold">{name}</h2>
+      <h2 className="text-2xl font-bold">{name}</h2>
       <p className="text-gray-500 font-lg">{description}</p>
       <h3 className=" font-semibold text-lg">{Area}</h3>
-      <h4 className="text-2xl font-bold">{price} taka</h4>
+      <h4 className="text-xl font-bold">{price} taka</h4>
       <div className="flex gap-2 items-center">
         <img className=" max-w-10 rounded-badge" src={auther_photo} alt="" />
         <h4 className="font-serif text-lg text-gray-600">{auther_name}</h4>
