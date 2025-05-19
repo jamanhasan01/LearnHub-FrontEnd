@@ -65,7 +65,7 @@ const ServiceDetails = () => {
 
   return (
     <div className="max-w-xl mx-auto border border-gray-200 p-6 flex flex-col gap-2 mt-32 my-20">
-      <img src={photoUrl} alt="" />
+      <img className="max-h-64" src={photoUrl} alt="" />
       <h2 className="text-2xl font-bold">{name}</h2>
       <p className="text-gray-500 font-lg">{description}</p>
       <h3 className=" font-semibold text-lg">{Area}</h3>

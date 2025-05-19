@@ -111,7 +111,7 @@ const Navbar = () => {
       className={`fixed left-0 top-0 w-full z-10 transition duration-300 ${
         navbarbg
           ? 'bg-white/80 shadow-md backdrop-blur text-[#4a2d72]'
-          :` ${location=='/'?"bg-transparent":"bg-white"} text-[#4a2d72]`
+          :` ${location.pathname=='/'?"bg-transparent":"bg-white"} text-[#4a2d72]`
       }`}
     >
       <div className='navbar max-w-[1240px] mx-auto'>
