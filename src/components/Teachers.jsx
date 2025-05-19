@@ -90,11 +90,11 @@ const Teachers = () => {
   {/* Magic happens here with auto-fit + minmax + justify-center */}
   <div className="grid grid-cols-[repeat(auto-fit,minmax(240px,auto))] justify-center gap-6 max-w-[1800px] w-full">
     {filteredTeachers.map((teacher) => (
-      <div key={teacher.id} className="w-[240px]"> {/* Fixed width */}
+      <div key={teacher.id} className="w-[240px] border border-gray-200 dark:border-gray-600 rounded-md"> {/* Fixed width */}
         <div className="card bg-base-100 shadow-md h-full">
           <div className="card-body text-center p-4">
             <div className="avatar">
-              <div className="w-20 mx-auto rounded-full ring ring-primary ring-offset-base-100 ring-offset-2">
+              <div className="w-20 mx-auto rounded-full ring ring-textClr ring-offset-base-100 ring-offset-2">
                 <img src={teacher.image} alt={teacher.name} />
               </div>
             </div>

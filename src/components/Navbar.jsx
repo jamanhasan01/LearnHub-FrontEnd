@@ -31,17 +31,16 @@ const Navbar = () => {
   }, [])
 
   let handleMoodOfTheme = () => {
-    let html = document.querySelector('html')
-    if (html) {
-      let currentTheme = html.getAttribute('data-theme')
-      if (currentTheme == 'light') {
-        html.setAttribute('data-theme', 'dark')
-      } else if (currentTheme == 'dark') {
-        html.setAttribute('data-theme', 'light')
-      }
+    let html = document.documentElement;
+    if (html.classList.contains('dark')) {
+      html.classList.remove('dark');
+      html.setAttribute('data-theme', 'light');
+    } else {
+      html.classList.add('dark');
+      html.setAttribute('data-theme', 'dark');
     }
-    setshowModeIcon(!showModeIcon)
-  }
+    setshowModeIcon(!showModeIcon);
+  };
   // Close dropdown when clicking outside
   useEffect(() => {
     const handleClickOutside = (event) => {

@@ -8,7 +8,7 @@ const Service = ({ service }) => {
   let {user}=useContext(authContext)
     
   return (
-    <div className="flex flex-col gap-2 p-3 border border-gray-200 rounded-xl">
+    <div className="flex flex-col gap-2 p-3 border border-gray-200 dark:border-gray-600 rounded-xl">
       <img className="rounded-md h-[160px] object-fill" referrerPolicy="no-referrer" src={photoUrl} alt={name} />
       <h3 className="text-lg font-bold">{name.length>20? `${name.slice(0,25)}...`:name}</h3>
       <div className="flex justify-between">
